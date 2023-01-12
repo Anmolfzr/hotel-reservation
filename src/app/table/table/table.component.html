@@ -1,0 +1,72 @@
+<div class="mat-elevation-z8">
+  <div class="search-bar">
+    <div style="display: flex">
+      <h4 class="search-header-text">Search</h4>
+      <mat-form-field>
+        <input
+          matInput
+          (keyup)="applyFilter($event)"
+          placeholder="name, email, phone"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <mat-table #table [dataSource]="dataSource">
+    <ng-container matColumnDef="firstName">
+      <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.firstName }} {{ element.lastName }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="stay">
+      <mat-header-cell *matHeaderCellDef>Stay</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        Arrival Date : {{ element.stay.arrivalDate | date }} <br />
+        Departure Date : {{ element.stay.departureDate | date }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="room">
+      <mat-header-cell *matHeaderCellDef>Room</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        Size : {{ element.room.roomSize }} <br />
+        Quantity : {{ element.room.roomQuantity }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef>E-mail</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.email }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="phone">
+      <mat-header-cell *matHeaderCellDef>Phone</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.phone }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="addressStreet">
+      <mat-header-cell *matHeaderCellDef>Address Street</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        Name : {{ element.addressStreet.streetName }} <br />
+        Number : {{ element.addressStreet.streetNumber }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="addressLocation">
+      <mat-header-cell *matHeaderCellDef>Address Location</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        Zip Code : {{ element.addressLocation.zipCode }} <br />
+        State : {{ element.addressLocation.state }} <br />
+        City : {{ element.addressLocation.city }}
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      (dblclick)="openDetails(row)"
+    ></mat-row>
+  </mat-table>
+</div>

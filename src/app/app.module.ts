@@ -20,6 +20,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import {MatCardModule} from '@angular/material/card';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { TableComponent } from './table/table/table.component';
+import { MaterialModule } from './material/material.module';
 
 
 
@@ -29,7 +31,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 @NgModule({
   declarations: [
     AppComponent,
-    ReservationComponent
+    ReservationComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatCheckboxModule,
     MatCardModule,
     MatAutocompleteModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule
 
     
   ],
